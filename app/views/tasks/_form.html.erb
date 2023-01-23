@@ -1,3 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+
 <%= form_with(model: task) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -11,22 +16,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="form-group">
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
 
   <div class="field">
-    <%= form.label :owner_id %>
-    <%= form.text_field :owner_id %>
+    <% form.label :owner_id %>
+    <%= form.hidden_field :owner_id, value: current_user.id %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+<%= form.submit "Create task", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+  </div>
+
+  </div>
+  </div>
