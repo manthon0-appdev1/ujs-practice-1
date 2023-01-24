@@ -18,10 +18,16 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
-
-  # GET /tasks/1/edit
-  def edit
+# GET /tasks/1/edit
+def edit
+  respond_to do |format|
+    format.html
+    format.json
+    format.js do
+      render template: "tasks/edit.js.erb"
+    end
   end
+end
 
   # POST /tasks or /tasks.json
   def create
