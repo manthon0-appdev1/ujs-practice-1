@@ -1,19 +1,18 @@
-<div class="container">
+<div id="<%= dom_id(task) %>" class="container">
   <div class="row">
     <div class="col-sm">
-
-<div class="card">
-  <div class="row">
-  <div class="col-sm">
-  <div class="card-body">
-    <p class="card-text"><%=task.body%></p>
-    <%= link_to "Move", move_task_path(task), class:"btn btn-primary"%>
-    <%= link_to 'Edit', edit_task_path(task), class:"btn btn-primary" %>
-    <%= link_to "Delete", task, method: :delete, class:"btn btn-primary"%>
-  </div>
-</div>
-  </div>
-</div>
-</div>
+      <div class="card">
+        <div class="row">
+          <div class="col-sm">
+            <div class="card-body">
+              <p class="card-text"><%=task.body%></p>
+              <%= link_to "Move", move_task_path(task), class:"btn btn-primary"%>
+              <%= link_to 'Edit', edit_task_path(task), class:"btn btn-primary" %>
+              <%= link_to "Delete", task, method: :delete, class:"btn btn-primary", remote: true%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
