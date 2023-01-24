@@ -19,6 +19,7 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 # GET /tasks/1/edit
+
 def edit
   respond_to do |format|
     format.html
@@ -54,13 +55,12 @@ end
       if @task.update(task_params)
         format.html { redirect_to root_path, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
-
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+        format.js do
+          render template: "tasks/update.js.erb"
+        end
     end
   end
+end
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
