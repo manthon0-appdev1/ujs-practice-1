@@ -4,3 +4,5 @@ console.log("#<%= @task.body %>")
 
 var added_task = $("<%= j(render @task) %>");
 $("#new_task_form").after(added_task);
+
+$("#new_task_form textarea").val("");
