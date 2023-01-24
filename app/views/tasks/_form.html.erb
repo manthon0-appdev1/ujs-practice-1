@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+      <div id="<%= dom_id(task) %>_form">
+        <%= form_with(model: task, data: { remote: true }) do |form| %>
+          <% if task.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+              <ul>
+                <% task.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.text_area :body, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <% form.label :owner_id %>
+            <%= form.hidden_field :owner_id, value: current_user.id %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "Create task", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

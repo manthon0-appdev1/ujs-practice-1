@@ -1,0 +1,5 @@
+$("#<%= dom_id(@task) %>").remove();
+
+var added_task = $("<p><%= @task.body %></p>");
+
+$("<%dom_id(@task)%>_form").before(added_task);
