@@ -31,12 +31,16 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to root_path, notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js do
+          render template: "tasks/create.js.erb"
+
+      #else
+        #format.html { render :new, status: :unprocessable_entity }
+        #format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
+end
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
@@ -44,6 +48,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to root_path, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
