@@ -78,8 +78,17 @@ end
       @task.status = "in_progress"
     end
     @task.save
-    redirect_to tasks_url, notice: "Task updated"
+  
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to root_path, notice: "Task moved." }
+        format.js do
+          render template: "tasks/move.js.erb"
+
   end
+end
+end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

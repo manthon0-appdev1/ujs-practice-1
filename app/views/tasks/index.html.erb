@@ -11,10 +11,12 @@
     <div class="card-header">
       Not yet started
     </div>
+    <div id="not_yet_started_list">
     <%=render "tasks/form", task: Task.new%>
     <% @not_yet_started_tasks.each do |task| %>
       <%=render "tasks/task", task: task%>
     <%end%>
+    </div>
   </div>
 </div>
 
@@ -25,9 +27,11 @@
         <div class="card-header">
           In progress
         </div>
+        <div id="in_progress_list">
         <% @in_progress_tasks.each do |task| %>
           <%=render "tasks/task", task: task%>
         <%end%>
+        </div>
       </div>
     </div>
 
@@ -37,9 +41,11 @@
           Completed
         </div>
       </div>
+      <div id="completed_list">
       <% @completed_tasks.each do |task| %>
           <%=render "tasks/task", task: task%>
         <%end%>
+    </div>
     </div>
   </div>
 
